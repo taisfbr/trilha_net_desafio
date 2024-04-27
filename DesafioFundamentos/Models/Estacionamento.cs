@@ -2,65 +2,88 @@ namespace DesafioFundamentos.Models
 {
     public class Estacionamento
     {
-        private decimal precoInicial = 0;
-        private decimal precoPorHora = 0;
-        private List<string> veiculos = new List<string>();
+        private decimal _precoInicial = 0;
+        private decimal _precoPorHora = 0;
+        private List<string> _veiculos = new List<string>();
 
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
         {
-            this.precoInicial = precoInicial;
-            this.precoPorHora = precoPorHora;
+            _precoInicial = precoInicial;
+            _precoPorHora = precoPorHora;
         }
 
         public void AdicionarVeiculo()
         {
-            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            // *IMPLEMENTE AQUI*
             Console.WriteLine("Digite a placa do veículo para estacionar:");
+            _veiculos.Add(Console.ReadLine());
         }
 
-        public void RemoverVeiculo()
+        public string RemoverVeiculo()
         {
-            Console.WriteLine("Digite a placa do veículo para remover:");
-
-            // Pedir para o usuário digitar a placa e armazenar na variável placa
-            // *IMPLEMENTE AQUI*
             string placa = "";
-
-            // Verifica se o veículo existe
-            if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
+            Console.WriteLine("Digite a placa do veículo para remover:");
+            placa = Console.ReadLine();
+            if (_veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
             {
-                Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
-
-                // TODO: Pedir para o usuário digitar a quantidade de horas que o veículo permaneceu estacionado,
-                // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
-                // *IMPLEMENTE AQUI*
-                int horas = 0;
-                decimal valorTotal = 0; 
-
-                // TODO: Remover a placa digitada da lista de veículos
-                // *IMPLEMENTE AQUI*
-
-                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
+                _veiculos.Remove(placa);
+                return placa;
             }
             else
             {
                 Console.WriteLine("Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente");
+                return "";
             }
         }
+        public void RetirarVeiculo()
+        {
+            int horas = 0;
+            decimal valorTotal = 0;
+            string placa = "";
+
+            Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+            string input = Console.ReadLine();
+
+            if (VerificarHora(input, out horas))
+            {
+                valorTotal = horas * _precoPorHora;
+                placa = RemoverVeiculo();
+                if (!string.IsNullOrEmpty(placa))
+                {
+                    Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
+                }
+
+            }
+
+        }
+
 
         public void ListarVeiculos()
         {
             // Verifica se há veículos no estacionamento
-            if (veiculos.Any())
+            if (_veiculos.Any())
             {
                 Console.WriteLine("Os veículos estacionados são:");
-                // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
-                // *IMPLEMENTE AQUI*
+                foreach (var veiculo in _veiculos)
+                {
+                    Console.WriteLine($"- {veiculo}");
+                }
             }
             else
             {
                 Console.WriteLine("Não há veículos estacionados.");
+            }
+        }
+
+        public bool VerificarHora(string input, out int inputParsed)
+        {
+            if (Int32.TryParse(input, out inputParsed) && inputParsed != 0)
+            {
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Numero de Horas invalido");
+                return false;
             }
         }
     }

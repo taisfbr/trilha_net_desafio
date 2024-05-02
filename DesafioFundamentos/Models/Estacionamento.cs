@@ -14,32 +14,29 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
-            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            // *IMPLEMENTE AQUI*
-            Console.WriteLine("Digite a placa do veículo para estacionar:");
+            var placa = ObterValorTexto("Digite a placa do veículo para estacionar:");
+            
+            if (!veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
+            {
+                veiculos.Add(placa);
+                Console.WriteLine($"Veículo {placa} adicionado com sucesso");
+            }
+            else
+            {
+                Console.WriteLine($"Desculpe, não foi possível adicionar esse veículo. Motivo: já existe um veículo com a placa {placa} estacionado.");
+            }            
         }
 
         public void RemoverVeiculo()
         {
-            Console.WriteLine("Digite a placa do veículo para remover:");
-
-            // Pedir para o usuário digitar a placa e armazenar na variável placa
-            // *IMPLEMENTE AQUI*
-            string placa = "";
+            var placa = ObterValorTexto("Digite a placa do veículo para remover:");
 
             // Verifica se o veículo existe
             if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
             {
-                Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
-
-                // TODO: Pedir para o usuário digitar a quantidade de horas que o veículo permaneceu estacionado,
-                // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
-                // *IMPLEMENTE AQUI*
-                int horas = 0;
-                decimal valorTotal = 0; 
-
-                // TODO: Remover a placa digitada da lista de veículos
-                // *IMPLEMENTE AQUI*
+                int horas = ObterValorNumerico("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+                decimal valorTotal = precoInicial + precoPorHora * horas;
+                veiculos.Remove(placa);
 
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
@@ -55,13 +52,58 @@ namespace DesafioFundamentos.Models
             if (veiculos.Any())
             {
                 Console.WriteLine("Os veículos estacionados são:");
-                // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
-                // *IMPLEMENTE AQUI*
+                foreach (string veiculo in veiculos) 
+                {
+                    Console.WriteLine($"Placa: {veiculo}");
+                }
             }
             else
             {
                 Console.WriteLine("Não há veículos estacionados.");
             }
+        }
+
+        private string ObterValorTexto(string mensagemExibicaoUsuario)
+        {
+            bool entradaValida = false;
+            string valor = string.Empty;
+            
+            while (!entradaValida)
+            {
+                Console.WriteLine(mensagemExibicaoUsuario);
+                valor = Console.ReadLine();
+
+                if(!String.IsNullOrEmpty(valor))
+                {
+                    entradaValida = true;
+                }
+                else
+                {
+                    Console.WriteLine("Valor inválido, digite um novo valor");
+                }
+            }
+            return valor;
+        }
+
+        private int ObterValorNumerico(string mensagemExibicaoUsuario)
+        {
+            bool entradaValida = false;
+            int valor = 0;
+
+            while (!entradaValida)
+            {
+                Console.WriteLine(mensagemExibicaoUsuario);
+                
+                if (int.TryParse(Console.ReadLine(), out valor))
+                {
+                    entradaValida = true;
+                }
+                else
+                {
+                    Console.WriteLine("Valor inválido, digite um novo valor");
+                }
+            }
+            return valor;
         }
     }
 }

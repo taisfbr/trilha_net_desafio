@@ -53,7 +53,6 @@ namespace DesafioFundamentos.Models
 
                 veiculos.Remove(placa.ToUpper());
 
-
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
             else
@@ -77,6 +76,7 @@ namespace DesafioFundamentos.Models
                     Console.WriteLine($"{indice} - Veículo Placa {item.ToUpper()}");
                     indice++;
                 }
+
             }
             else
             {

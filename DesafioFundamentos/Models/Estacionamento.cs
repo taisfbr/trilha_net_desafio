@@ -14,11 +14,11 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
+            //Implementado
+            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
 
             Console.WriteLine("Digite a placa do veículo para estacionar");
 
-            //Implementado
-            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
             // *IMPLEMENTE AQUI*
             string placa = Console.ReadLine();
 
@@ -32,7 +32,7 @@ namespace DesafioFundamentos.Models
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
 
-         //Implememntado 
+         //Implementado 
             // Pedir para o usuário digitar a placa e armazenar na variável placa
             // *IMPLEMENTE AQUI*
             string placa = Console.ReadLine();

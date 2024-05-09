@@ -7,6 +7,8 @@ decimal precoInicial = 0;
 decimal precoPorHora = 0;
 string nome;
 
+//Todo-Melhorar Interação com o usuario
+
 Console.WriteLine(" Olá, Por gentileza digite o seu nome:");
 nome = Console.ReadLine();
 

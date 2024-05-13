@@ -1,59 +1,83 @@
-﻿using DesafioFundamentos.Models;
+﻿using System;
+using DesafioFundamentos.Models;
 
-// Coloca o encoding para UTF8 para exibir acentuação
-Console.OutputEncoding = System.Text.Encoding.UTF8;
-
-decimal precoInicial = 0;
-decimal precoPorHora = 0;
-
-Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
-                  "Digite o preço inicial:");
-precoInicial = Convert.ToDecimal(Console.ReadLine());
-
-Console.WriteLine("Agora digite o preço por hora:");
-precoPorHora = Convert.ToDecimal(Console.ReadLine());
-
-// Instancia a classe Estacionamento, já com os valores obtidos anteriormente
-Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
-
-string opcao = string.Empty;
-bool exibirMenu = true;
-
-// Realiza o loop do menu
-while (exibirMenu)
+namespace Estacionamento
 {
-    Console.Clear();
-    Console.WriteLine("Digite a sua opção:");
-    Console.WriteLine("1 - Cadastrar veículo");
-    Console.WriteLine("2 - Remover veículo");
-    Console.WriteLine("3 - Listar veículos");
-    Console.WriteLine("4 - Encerrar");
-
-    switch (Console.ReadLine())
+    class Program
     {
-        case "1":
-            es.AdicionarVeiculo();
-            break;
+        static void Main(string[] args)
+        {
+            // Variáveis para armazenar o preço inicial e o preço por hora
+            decimal precoInicial;
+            decimal precoPorHora;
 
-        case "2":
-            es.RemoverVeiculo();
-            break;
+            // Solicitar ao usuário o preço inicial
+            Console.WriteLine("Seja bem-vindo ao sistema de estacionamento!");
+            Console.WriteLine("Digite o preço inicial:");
 
-        case "3":
-            es.ListarVeiculos();
-            break;
+            // Loop para garantir que o usuário insira um número válido para o preço inicial
+            while (!decimal.TryParse(Console.ReadLine(), out precoInicial))
+            {
+                Console.WriteLine("Valor inválido. Digite novamente o preço inicial:");
+            }
 
-        case "4":
-            exibirMenu = false;
-            break;
+            // Solicitar ao usuário o preço por hora
+            Console.WriteLine("Agora digite o preço por hora:");
 
-        default:
-            Console.WriteLine("Opção inválida");
-            break;
+            // Loop para garantir que o usuário insira um número válido para o preço por hora
+            while (!decimal.TryParse(Console.ReadLine(), out precoPorHora))
+            {
+                Console.WriteLine("Valor inválido. Digite novamente o preço por hora:");
+            }
+
+            // Instanciar a classe Estacionamento com os valores fornecidos
+            var estacionamento = new DesafioFundamentos.Models.Estacionamento(precoInicial, precoPorHora);
+
+            bool exibirMenu = true;
+
+            // Loop do menu principal
+            while (exibirMenu)
+            {
+                // Limpar a tela e exibir as opções do menu
+                Console.Clear();
+                Console.WriteLine("Digite a sua opção:");
+                Console.WriteLine("1 - Cadastrar veículo");
+                Console.WriteLine("2 - Remover veículo");
+                Console.WriteLine("3 - Listar veículos");
+                Console.WriteLine("4 - Encerrar");
+
+                // Capturar a opção escolhida pelo usuário
+                string opcao = Console.ReadLine();
+
+                // Executar a ação correspondente à opção escolhida
+                switch (opcao)
+                {
+                    case "1":
+                        estacionamento.AdicionarVeiculo();
+                        break;
+
+                    case "2":
+                        estacionamento.RemoverVeiculo();
+                        break;
+
+                    case "3":
+                        estacionamento.ListarVeiculos();
+                        break;
+
+                    case "4":
+                        exibirMenu = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Opção inválida. Pressione uma tecla para continuar.");
+                        Console.ReadKey();
+                        break;
+                }
+            }
+
+            // Mensagem de encerramento do programa
+            Console.WriteLine("O programa foi encerrado. Pressione uma tecla para sair.");
+            Console.ReadKey();
+        }
     }
-
-    Console.WriteLine("Pressione uma tecla para continuar");
-    Console.ReadLine();
 }
-
-Console.WriteLine("O programa se encerrou");

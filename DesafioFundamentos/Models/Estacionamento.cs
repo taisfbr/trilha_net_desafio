@@ -66,7 +66,7 @@ namespace DesafioFundamentos.Models
 
                 foreach (string veiculo in veiculos)
                 {
-                    Console.WriteLine($"Veículo: {veiculo}");
+                    Console.WriteLine($"Veículo:  {veiculo}");
                 }
             }
             else

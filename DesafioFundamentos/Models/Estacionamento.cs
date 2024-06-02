@@ -16,7 +16,21 @@ namespace DesafioFundamentos.Models
         {
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
             // *IMPLEMENTE AQUI*
-            Console.WriteLine("Digite a placa do veículo para estacionar:");
+            Console.WriteLine("Digite a placa do veículo:");
+            string newVeiculo = Console.ReadLine();
+
+            if (veiculos.Count == 0)
+            {
+                veiculos.Add(newVeiculo);
+            }
+            else if (!veiculos.Contains(newVeiculo))
+            {
+                veiculos.Add(newVeiculo);
+            }
+            else
+            {
+                Console.WriteLine($"A placa {newVeiculo} cadastrada.");
+            }
         }
 
         public void RemoverVeiculo()
@@ -25,7 +39,7 @@ namespace DesafioFundamentos.Models
 
             // Pedir para o usuário digitar a placa e armazenar na variável placa
             // *IMPLEMENTE AQUI*
-            string placa = "";
+            string placa = Console.ReadLine();
 
             // Verifica se o veículo existe
             if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
@@ -40,7 +54,11 @@ namespace DesafioFundamentos.Models
 
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
+                Console.WriteLine("Digite a quantidade de horas: ");
+                int horas = Convert.ToInt32(Console.ReadLine());
+                decimal valorTotal = precoInicial + (precoPorHora * horas);
 
+                veiculos.Remove(placa);
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
             else
@@ -57,6 +75,11 @@ namespace DesafioFundamentos.Models
                 Console.WriteLine("Os veículos estacionados são:");
                 // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
                 // *IMPLEMENTE AQUI*
+
+                foreach (string listaVeiculos in veiculos)
+                {
+                    Console.WriteLine($"{listaVeiculos}");
+                }
             }
             else
             {

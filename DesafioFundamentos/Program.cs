@@ -1,35 +1,47 @@
-﻿using DesafioFundamentos.Models;
+﻿using DesafioFundamentos.Helper;
+using DesafioFundamentos.Models;
 
 // Coloca o encoding para UTF8 para exibir acentuação
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-decimal precoInicial = 0;
 decimal precoPorHora = 0;
+decimal precoInicial = 0;
 
-Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
-                  "Digite o preço inicial:");
-precoInicial = Convert.ToDecimal(Console.ReadLine());
+ConsoleHelper.LogInformacao("----------------------------------------------------");
+ConsoleHelper.LogInformacao("Seja bem vindo ao sistema de estacionamento!");
+ConsoleHelper.LogInformacao("----------------------------------------------------");
 
-Console.WriteLine("Agora digite o preço por hora:");
-precoPorHora = Convert.ToDecimal(Console.ReadLine());
+ConsoleHelper.LogInformacao("Digite o preço inicial:");
+while (!decimal.TryParse(Console.ReadLine(), out precoInicial))
+{
+    ConsoleHelper.LogErro($"Preço inicial informado inválido!");
+    ConsoleHelper.LogInformacao("Digite o preço inicial:");
+}
 
-// Instancia a classe Estacionamento, já com os valores obtidos anteriormente
-Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
+ConsoleHelper.LogInformacao("Agora digite o preço por hora:");
+while (!decimal.TryParse(Console.ReadLine(), out precoPorHora)) ;
+{
+    ConsoleHelper.LogErro($"Preço por hora informado inválido!");
+    ConsoleHelper.LogInformacao("Agora digite o preço por hora:");
+}
 
-string opcao = string.Empty;
-bool exibirMenu = true;
+var es = new Estacionamento(precoInicial, precoPorHora);
 
-// Realiza o loop do menu
+var opcao = string.Empty;
+
+var exibirMenu = true;
 while (exibirMenu)
 {
-    Console.Clear();
-    Console.WriteLine("Digite a sua opção:");
-    Console.WriteLine("1 - Cadastrar veículo");
-    Console.WriteLine("2 - Remover veículo");
-    Console.WriteLine("3 - Listar veículos");
-    Console.WriteLine("4 - Encerrar");
+    ConsoleHelper.Clear();
+    ConsoleHelper.LogInformacao("Digite a sua opção:");
+    ConsoleHelper.LogInformacao("1 - Cadastrar veículo");
+    ConsoleHelper.LogInformacao("2 - Remover veículo");
+    ConsoleHelper.LogInformacao("3 - Listar veículos");
+    ConsoleHelper.LogInformacao("4 - Encerrar");
 
-    switch (Console.ReadLine())
+    opcao = Console.ReadLine();
+
+    switch (opcao)
     {
         case "1":
             es.AdicionarVeiculo();
@@ -48,11 +60,11 @@ while (exibirMenu)
             break;
 
         default:
-            Console.WriteLine("Opção inválida");
+            ConsoleHelper.LogErro("Opção inválida");
             break;
     }
 
-    Console.WriteLine("Pressione uma tecla para continuar");
+    ConsoleHelper.LogInformacao("Pressione uma tecla para continuar");
     Console.ReadLine();
 }
 

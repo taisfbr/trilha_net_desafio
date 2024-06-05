@@ -14,7 +14,7 @@ nome = Console.ReadLine();
 
 Console.WriteLine();
 
-Console.WriteLine($" Olá {nome}, Seja bem vindo ao sistema de estacionamento!"); 
+Console.WriteLine($"Seja bem vindo ao sistema de estacionamento {nome}!"); 
 Console.WriteLine();
 
                  Console.WriteLine($"Digite o preço inicial:");
@@ -35,7 +35,7 @@ bool exibirMenu = true;
 while (exibirMenu)
 {
     Console.Clear();
-    Console.WriteLine("Digite a sua opção:");
+    Console.WriteLine($"Digite a sua opção {nome}:");
     Console.WriteLine("1 - Cadastrar veículo");
     Console.WriteLine("2 - Remover veículo");
     Console.WriteLine("3 - Listar veículos");
@@ -60,7 +60,7 @@ while (exibirMenu)
             break;
 
         default:
-            Console.WriteLine("Opção inválida");
+            Console.WriteLine("Escolha outra opção:");
             break;
     }
 
@@ -68,4 +68,4 @@ while (exibirMenu)
     Console.ReadLine();
 }
 
-Console.WriteLine("O programa se encerrou");
+Console.WriteLine("Obrigado por hoje!");

@@ -12,8 +12,12 @@ string nome;
 Console.WriteLine(" Olá, Por gentileza digite o seu nome:");
 nome = Console.ReadLine();
 
-Console.WriteLine($" Olá {nome}, Seja bem vindo ao sistema de estacionamento!\n" +
-                  "Digite o preço inicial:");
+Console.WriteLine();
+
+Console.WriteLine($" Olá {nome}, Seja bem vindo ao sistema de estacionamento!"); 
+Console.WriteLine();
+
+                 Console.WriteLine($"Digite o preço inicial:");
 precoInicial = Convert.ToDecimal(Console.ReadLine());
 
 Console.WriteLine("Agora digite o preço por hora:");

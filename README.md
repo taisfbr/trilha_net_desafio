@@ -1,3 +1,27 @@
+## Description
+🎯 Development was **strictly focused** on addressing the challenge and **making specific code improvements**.
+
+## Summary
+
+Primary objectives of the challenge:
+- ✅ Implemented of the `AdicionarVeiculo()` method
+- ✅ Implemented of the `RemoverVeiculo `method
+- ✅ Implemented of the `ListarVeiculos` method
+
+Additional contributions to the project:
+- 🐞 Bug fixes
+- 🔧 Updated project to **.NET 8**
+
+## Contributions to the project
+
+**🐞 Bug Fix:** The application did not check and process data types when requesting the number of hours the vehicle was parked in the `RemoverVeiculo()` method, generating a runtime exception when a value other than an integer was reported. For this purpose, a method for checking `int` data types was implemented.
+
+**👷‍♂️ Good practices:** To avoid code duplication in the `Estacionamento.cs` class, methods were implemented to obtain user data for the types of data necessary to complete the challenge.
+
+**🔨 Refactoring:** Variables were renamed for better code readability.
+
+---
+
 # DIO - Trilha .NET - Fundamentos
 www.dio.me
 

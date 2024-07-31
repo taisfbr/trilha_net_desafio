@@ -4,7 +4,7 @@ namespace DesafioFundamentos.Models
     {
         private decimal precoInicial = 0;
         private decimal precoPorHora = 0;
-        private List<string> veiculos = new List<string>();
+        private List<Veiculo> veiculos = new List<Veiculo>();
 
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
         {
@@ -14,34 +14,29 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
-            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            // *IMPLEMENTE AQUI*
-            Console.WriteLine("Digite a placa do veículo para estacionar:");
+            Console.Write("Digite a placa do veículo para estacionar:");
+            Veiculo veiculo = new(Console.ReadLine());
+            veiculos.Add(veiculo);
+            veiculo.Entrada = DateTime.Now;
+
+            Console.WriteLine(GerarTicketEntrada(veiculo));
         }
 
         public void RemoverVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
 
-            // Pedir para o usuário digitar a placa e armazenar na variável placa
-            // *IMPLEMENTE AQUI*
-            string placa = "";
+            string placa = Console.ReadLine();
 
-            // Verifica se o veículo existe
-            if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
+            if (veiculos.Any(x => x.Placa.ToUpper() == placa.ToUpper()))
             {
-                Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
 
-                // TODO: Pedir para o usuário digitar a quantidade de horas que o veículo permaneceu estacionado,
-                // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
-                // *IMPLEMENTE AQUI*
-                int horas = 0;
-                decimal valorTotal = 0; 
+                Veiculo veiculo = veiculos.Find(x => x.Placa.ToUpper() == placa.ToUpper());
+                veiculos.Remove(veiculo);
+                veiculo.Saida = DateTime.Now;
 
-                // TODO: Remover a placa digitada da lista de veículos
-                // *IMPLEMENTE AQUI*
+                Console.WriteLine(GerarTicketSaida(veiculo));
 
-                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
             else
             {
@@ -51,17 +46,52 @@ namespace DesafioFundamentos.Models
 
         public void ListarVeiculos()
         {
-            // Verifica se há veículos no estacionamento
             if (veiculos.Any())
             {
-                Console.WriteLine("Os veículos estacionados são:");
-                // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
-                // *IMPLEMENTE AQUI*
+                Console.WriteLine("Veículos Estacionados: ");
+                foreach (Veiculo carro in veiculos)
+                {
+                    Console.WriteLine($"placa: {carro.Placa}");
+                }
             }
             else
             {
                 Console.WriteLine("Não há veículos estacionados.");
             }
+        }
+
+        private string GerarTicketEntrada(Veiculo veiculo)
+        {
+            return $@" 
+                -------------------- TICKET ------------------------
+                ---------- Veiculo Cadastrado Com Sucesso ----------
+                ----------------------------------------------------
+                Veiculo de placa: {veiculo.Placa}  
+                Horario Entrada: {veiculo.Entrada}
+                Valor fixo de entrada: {precoInicial}
+                Valor por hora: {precoPorHora}
+                ";
+        }
+
+        private string GerarTicketSaida(Veiculo veiculo)
+        {
+            Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+            //decimal horas = (decimal)(veiculo.Saida - veiculo.Entrada).TotalHours;
+            int horasMock = Convert.ToInt32(Console.ReadLine());
+            decimal valorTotal;
+
+            valorTotal = precoInicial + (precoPorHora * horasMock);
+
+            return $@" 
+                -------------------- TICKET ------------------------
+                ----------------- Volte Sempre !--------------------
+                ----------------------------------------------------
+                Veiculo de placa: {veiculo.Placa} 
+                Horario Entrada:{veiculo.Entrada}
+                Horario Saida: {veiculo.Entrada.AddHours(horasMock)}
+                Valor por hora: {precoPorHora}
+                Valor Total: {valorTotal}
+                ";
         }
     }
 }

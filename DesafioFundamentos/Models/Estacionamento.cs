@@ -27,7 +27,7 @@ namespace DesafioFundamentos.Models
                     placaFormatada = Veiculo.FormatarPlaca(placa);
                 }
 
-                Veiculo veiculo = new(placaFormatada);
+                Veiculo veiculo = Veiculo.CriarVeiculo(placaFormatada);
                 veiculos.Add(veiculo);
                 veiculo.Entrada = DateTime.Now;
                 Console.WriteLine(GerarTicketEntrada(veiculo));
@@ -100,7 +100,8 @@ namespace DesafioFundamentos.Models
                 ---------- Veiculo Cadastrado Com Sucesso ----------
                 ----------------------------------------------------
                 Veiculo de placa: {veiculo.Placa}  
-                Horario Entrada: {veiculo.Entrada}
+                Data: {veiculo.Entrada.ToShortDateString()}
+                Horario Entrada: {veiculo.Entrada.ToShortTimeString()}
                 Valor fixo de entrada: {PrecoInicial:C}
                 Valor por hora: {PrecoPorHora:C}
                 ";
@@ -115,8 +116,9 @@ namespace DesafioFundamentos.Models
                 ----------------- Volte Sempre !--------------------
                 ----------------------------------------------------
                 Veiculo de placa: {veiculo.Placa} 
-                Horario Entrada:{veiculo.Entrada}
-                Horario Saida: {veiculo.Entrada.AddHours(horas)}
+                Data: {veiculo.Entrada.ToShortDateString()}
+                Horario Entrada:{veiculo.Entrada.ToShortTimeString()}
+                Horario Saida: {veiculo.Entrada.AddHours(horas).ToShortTimeString()}
                 Valor por hora: {PrecoPorHora:C}
                 Valor Total: {valorTotal:C}
                 ";

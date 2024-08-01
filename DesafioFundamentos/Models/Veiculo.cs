@@ -40,5 +40,10 @@ namespace DesafioFundamentos.Models
         {
             return placa.Insert(3, "-");
         }
+
+        public static Veiculo CriarVeiculo(string placa)
+        {
+            return new Veiculo(placa);
+        }
     }
 }

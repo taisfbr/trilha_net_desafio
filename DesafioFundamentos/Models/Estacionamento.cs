@@ -1,42 +1,62 @@
+using DesafioFundamentos.Exceptions;
+
 namespace DesafioFundamentos.Models
 {
     public class Estacionamento
     {
-        private decimal precoInicial = 0;
-        private decimal precoPorHora = 0;
-        private List<Veiculo> veiculos = new List<Veiculo>();
+        private readonly List<Veiculo> veiculos = new();
+        public decimal PrecoInicial { get; private set; }
+        private decimal PrecoPorHora { get; set; }
 
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
         {
-            this.precoInicial = precoInicial;
-            this.precoPorHora = precoPorHora;
+            PrecoInicial = precoInicial;
+            PrecoPorHora = precoPorHora;
         }
 
         public void AdicionarVeiculo()
         {
             Console.Write("Digite a placa do veículo para estacionar:");
-            Veiculo veiculo = new(Console.ReadLine());
-            veiculos.Add(veiculo);
-            veiculo.Entrada = DateTime.Now;
-
-            Console.WriteLine(GerarTicketEntrada(veiculo));
+            try
+            {
+                Veiculo veiculo = new(Console.ReadLine());
+                veiculos.Add(veiculo);
+                veiculo.Entrada = DateTime.Now;
+                Console.WriteLine(GerarTicketEntrada(veiculo));
+            }
+            catch (InvalidArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public void RemoverVeiculo()
         {
-            Console.WriteLine("Digite a placa do veículo para remover:");
-
+            Console.WriteLine("Digite a placa do veículo para remover: (LLL-NNNN)");
             string placa = Console.ReadLine();
 
-            if (veiculos.Any(x => x.Placa.ToUpper() == placa.ToUpper()))
+            if (!Veiculo.ValidarPlaca(placa.ToUpper()))
             {
+                Console.WriteLine("Placa inválida. O formato deve ser: LLL-NNNN!");
+                return;
+            }
+            Veiculo veiculo = veiculos.FirstOrDefault(x => x.Placa.Equals(placa, StringComparison.OrdinalIgnoreCase));
 
-                Veiculo veiculo = veiculos.Find(x => x.Placa.ToUpper() == placa.ToUpper());
-                veiculos.Remove(veiculo);
+            if (veiculo != null)
+            {
                 veiculo.Saida = DateTime.Now;
+                //decimal horas = (decimal)(veiculo.Saida - veiculo.Entrada).TotalHours;
+                Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+                string horasInput = Console.ReadLine();
 
-                Console.WriteLine(GerarTicketSaida(veiculo));
+                if (!int.TryParse(horasInput, out int horasMock) || horasMock < 0)
+                {
+                    Console.WriteLine("Entrada inválida para horas. Por favor, insira um número inteiro positivo.");
+                    return;
+                }
 
+                Console.WriteLine(GerarTicketSaida(veiculo, horasMock));
+                veiculos.Remove(veiculo);
             }
             else
             {
@@ -68,19 +88,14 @@ namespace DesafioFundamentos.Models
                 ----------------------------------------------------
                 Veiculo de placa: {veiculo.Placa}  
                 Horario Entrada: {veiculo.Entrada}
-                Valor fixo de entrada: {precoInicial}
-                Valor por hora: {precoPorHora}
+                Valor fixo de entrada: {PrecoInicial:C}
+                Valor por hora: {PrecoPorHora:C}
                 ";
         }
 
-        private string GerarTicketSaida(Veiculo veiculo)
+        private string GerarTicketSaida(Veiculo veiculo, int horas)
         {
-            Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
-            //decimal horas = (decimal)(veiculo.Saida - veiculo.Entrada).TotalHours;
-            int horasMock = Convert.ToInt32(Console.ReadLine());
-            decimal valorTotal;
-
-            valorTotal = precoInicial + (precoPorHora * horasMock);
+            decimal valorTotal = PrecoInicial + (PrecoPorHora * horas);
 
             return $@" 
                 -------------------- TICKET ------------------------
@@ -88,9 +103,9 @@ namespace DesafioFundamentos.Models
                 ----------------------------------------------------
                 Veiculo de placa: {veiculo.Placa} 
                 Horario Entrada:{veiculo.Entrada}
-                Horario Saida: {veiculo.Entrada.AddHours(horasMock)}
-                Valor por hora: {precoPorHora}
-                Valor Total: {valorTotal}
+                Horario Saida: {veiculo.Entrada.AddHours(horas)}
+                Valor por hora: {PrecoPorHora:C}
+                Valor Total: {valorTotal:C}
                 ";
         }
     }

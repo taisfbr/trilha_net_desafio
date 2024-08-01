@@ -35,5 +35,10 @@ namespace DesafioFundamentos.Models
             Regex regex = new Regex(padrao);
             return regex.IsMatch(placa.ToUpper());
         }
+
+        public static string FormatarPlaca(string placa)
+        {
+            return placa.Insert(3, "-");
+        }
     }
 }

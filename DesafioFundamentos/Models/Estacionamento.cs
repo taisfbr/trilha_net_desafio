@@ -19,7 +19,15 @@ namespace DesafioFundamentos.Models
             Console.Write("Digite a placa do veículo para estacionar:");
             try
             {
-                Veiculo veiculo = new(Console.ReadLine());
+                string placa = Console.ReadLine();
+                string placaFormatada = "";
+
+                if (!placa.Contains('-'))
+                {
+                    placaFormatada = Veiculo.FormatarPlaca(placa);
+                }
+
+                Veiculo veiculo = new(placaFormatada);
                 veiculos.Add(veiculo);
                 veiculo.Entrada = DateTime.Now;
                 Console.WriteLine(GerarTicketEntrada(veiculo));
@@ -34,13 +42,18 @@ namespace DesafioFundamentos.Models
         {
             Console.WriteLine("Digite a placa do veículo para remover: (LLL-NNNN)");
             string placa = Console.ReadLine();
+            string placaFormatada = "";
 
-            if (!Veiculo.ValidarPlaca(placa.ToUpper()))
+            if (!placa.Contains('-'))
+            {
+                placaFormatada = Veiculo.FormatarPlaca(placa);
+            }
+            if (!Veiculo.ValidarPlaca(placaFormatada.ToUpper()))
             {
                 Console.WriteLine("Placa inválida. O formato deve ser: LLL-NNNN!");
                 return;
             }
-            Veiculo veiculo = veiculos.FirstOrDefault(x => x.Placa.Equals(placa, StringComparison.OrdinalIgnoreCase));
+            Veiculo veiculo = veiculos.FirstOrDefault(x => x.Placa.Equals(placaFormatada, StringComparison.OrdinalIgnoreCase));
 
             if (veiculo != null)
             {

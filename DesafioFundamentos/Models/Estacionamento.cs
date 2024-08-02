@@ -1,3 +1,4 @@
+using System.Linq;
 using DesafioFundamentos.Exceptions;
 
 namespace DesafioFundamentos.Models
@@ -25,9 +26,15 @@ namespace DesafioFundamentos.Models
                 if (!placa.Contains('-'))
                 {
                     placaFormatada = Veiculo.FormatarPlaca(placa);
+                    placa = placaFormatada;
+                }
+                if (veiculos.Exists(e => e.Placa.ToUpper() == placa.ToUpper()))
+                {
+                    Console.WriteLine("Veiculo já está já está cadastrado no estacionamento!");
+                    return;
                 }
 
-                Veiculo veiculo = Veiculo.CriarVeiculo(placaFormatada);
+                Veiculo veiculo = Veiculo.CriarVeiculo(placa);
                 veiculos.Add(veiculo);
                 veiculo.Entrada = DateTime.Now;
                 Console.WriteLine(GerarTicketEntrada(veiculo));
@@ -36,45 +43,61 @@ namespace DesafioFundamentos.Models
             {
                 Console.WriteLine(ex.Message);
             }
+            catch (ArgumentOutOfRangeException)
+            {
+
+                Console.WriteLine("Placa invalida o formato deve ser: (LLL-NNNN)!");
+            }
+
         }
 
         public void RemoverVeiculo()
         {
-            Console.WriteLine("Digite a placa do veículo para remover: (LLL-NNNN)");
-            string placa = Console.ReadLine();
-            string placaFormatada = "";
-
-            if (!placa.Contains('-'))
+            try
             {
-                placaFormatada = Veiculo.FormatarPlaca(placa);
-            }
-            if (!Veiculo.ValidarPlaca(placaFormatada.ToUpper()))
-            {
-                Console.WriteLine("Placa inválida. O formato deve ser: LLL-NNNN!");
-                return;
-            }
-            Veiculo veiculo = veiculos.FirstOrDefault(x => x.Placa.Equals(placaFormatada, StringComparison.OrdinalIgnoreCase));
+                Console.WriteLine("Digite a placa do veículo para remover: (LLL-NNNN)");
+                string placa = Console.ReadLine();
+                string placaFormatada = "";
 
-            if (veiculo != null)
-            {
-                veiculo.Saida = DateTime.Now;
-                //decimal horas = (decimal)(veiculo.Saida - veiculo.Entrada).TotalHours;
-                Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
-                string horasInput = Console.ReadLine();
-
-                if (!int.TryParse(horasInput, out int horasMock) || horasMock < 0)
+                if (!placa.Contains('-'))
                 {
-                    Console.WriteLine("Entrada inválida para horas. Por favor, insira um número inteiro positivo.");
+                    placaFormatada = Veiculo.FormatarPlaca(placa);
+                    placa = placaFormatada;
+                }
+                if (!Veiculo.ValidarPlaca(placa.ToUpper()) || placa == null)
+                {
+                    Console.WriteLine("Placa inválida. O formato deve ser: LLL-NNNN!");
                     return;
                 }
+                Veiculo veiculo = veiculos.FirstOrDefault(x => x.Placa.Equals(placa, StringComparison.OrdinalIgnoreCase));
 
-                Console.WriteLine(GerarTicketSaida(veiculo, horasMock));
-                veiculos.Remove(veiculo);
+                if (veiculo != null)
+                {
+                    veiculo.Saida = DateTime.Now;
+                    //decimal horas = (decimal)(veiculo.Saida - veiculo.Entrada).TotalHours;
+                    Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+                    string horasInput = Console.ReadLine();
+
+                    if (!int.TryParse(horasInput, out int horasMock) || horasMock < 0)
+                    {
+                        Console.WriteLine("Entrada inválida para horas. Por favor, insira um número inteiro positivo.");
+                        return;
+                    }
+
+                    Console.WriteLine(GerarTicketSaida(veiculo, horasMock));
+                    veiculos.Remove(veiculo);
+                }
+                else
+                {
+                    Console.WriteLine("Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente");
+                }
             }
-            else
+            catch (ArgumentOutOfRangeException)
             {
-                Console.WriteLine("Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente");
+
+                Console.WriteLine("Placa invalida o formato deve ser: (LLL-NNNN)!");
             }
+
         }
 
         public void ListarVeiculos()

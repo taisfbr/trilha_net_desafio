@@ -38,12 +38,17 @@ namespace DesafioFundamentos.Models
 
         public static string FormatarPlaca(string placa)
         {
-            return placa.Insert(3, "-");
+            placa = placa.Contains('-') ? placa : placa.Insert(3, "-");
+            return placa;
         }
 
         public static Veiculo CriarVeiculo(string placa)
         {
             return new Veiculo(placa);
+        }
+        public static string MensagemFormatoPlacaInvalido()
+        {
+            return "Placa invalida o formato deve ser: (LLL-NNNN)!";
         }
     }
 }

@@ -21,13 +21,8 @@ namespace DesafioFundamentos.Models
             try
             {
                 string placa = Console.ReadLine();
-                string placaFormatada = "";
+                placa = Veiculo.FormatarPlaca(placa);
 
-                if (!placa.Contains('-'))
-                {
-                    placaFormatada = Veiculo.FormatarPlaca(placa);
-                    placa = placaFormatada;
-                }
                 if (veiculos.Exists(e => e.Placa.ToUpper() == placa.ToUpper()))
                 {
                     Console.WriteLine("Veiculo já está já está cadastrado no estacionamento!");
@@ -46,27 +41,22 @@ namespace DesafioFundamentos.Models
             catch (ArgumentOutOfRangeException)
             {
 
-                Console.WriteLine("Placa invalida o formato deve ser: (LLL-NNNN)!");
+                Console.WriteLine(Veiculo.MensagemFormatoPlacaInvalido());
             }
 
         }
 
         public void RemoverVeiculo()
         {
+            Console.WriteLine("Digite a placa do veículo para remover: (LLL-NNNN)");
             try
             {
-                Console.WriteLine("Digite a placa do veículo para remover: (LLL-NNNN)");
                 string placa = Console.ReadLine();
-                string placaFormatada = "";
+                placa = Veiculo.FormatarPlaca(placa);
 
-                if (!placa.Contains('-'))
-                {
-                    placaFormatada = Veiculo.FormatarPlaca(placa);
-                    placa = placaFormatada;
-                }
                 if (!Veiculo.ValidarPlaca(placa.ToUpper()) || placa == null)
                 {
-                    Console.WriteLine("Placa inválida. O formato deve ser: LLL-NNNN!");
+                    Console.WriteLine(Veiculo.MensagemFormatoPlacaInvalido());
                     return;
                 }
                 Veiculo veiculo = veiculos.FirstOrDefault(x => x.Placa.Equals(placa, StringComparison.OrdinalIgnoreCase));
@@ -95,7 +85,7 @@ namespace DesafioFundamentos.Models
             catch (ArgumentOutOfRangeException)
             {
 
-                Console.WriteLine("Placa invalida o formato deve ser: (LLL-NNNN)!");
+                Console.WriteLine(Veiculo.MensagemFormatoPlacaInvalido());
             }
 
         }
@@ -104,15 +94,12 @@ namespace DesafioFundamentos.Models
         {
             if (veiculos.Any())
             {
-                Console.WriteLine("Veículos Estacionados: ");
-                foreach (Veiculo carro in veiculos)
-                {
-                    Console.WriteLine($"placa: {carro.Placa}");
-                }
+                Console.WriteLine("Veículos Estacionados:");
+                veiculos.ForEach(vel => Console.WriteLine($"Placa: {vel.Placa}"));
             }
             else
             {
-                Console.WriteLine("Não há veículos estacionados.");
+                Console.WriteLine("Nenhum Veículo foi encontrado");
             }
         }
 

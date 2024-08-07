@@ -1,4 +1,5 @@
-﻿using DesafioFundamentos.Models;
+﻿using System.Reflection.Metadata;
+using DesafioFundamentos.Models;
 
 // Coloca o encoding para UTF8 para exibir acentuação
 Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -19,15 +20,23 @@ Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
 string opcao = string.Empty;
 bool exibirMenu = true;
 
+Console.Clear();
 // Realiza o loop do menu
 while (exibirMenu)
 {
     Console.Clear();
-    Console.WriteLine("Digite a sua opção:");
-    Console.WriteLine("1 - Cadastrar veículo");
-    Console.WriteLine("2 - Remover veículo");
-    Console.WriteLine("3 - Listar veículos");
-    Console.WriteLine("4 - Encerrar");
+    bool menu = true;
+    if (menu)
+    {
+        Console.WriteLine("*************************");
+        Console.WriteLine("* Digite a sua opção:   *");
+        Console.WriteLine("* 1 - Cadastrar veículo *");
+        Console.WriteLine("* 2 - Remover veículo   *");
+        Console.WriteLine("* 3 - Listar veículos   *");
+        Console.WriteLine("* 4 - Encerrar          *");
+        Console.WriteLine("*************************");
+        menu = false;
+    }
 
     switch (Console.ReadLine())
     {
@@ -52,7 +61,7 @@ while (exibirMenu)
             break;
     }
 
-    Console.WriteLine("Pressione uma tecla para continuar");
+    Console.WriteLine("Pressione uma tecla para voltar para o menu");
     Console.ReadLine();
 }
 

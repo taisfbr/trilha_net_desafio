@@ -15,8 +15,15 @@ namespace DesafioFundamentos.Models
         public void AdicionarVeiculo()
         {
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            // *IMPLEMENTE AQUI*
             Console.WriteLine("Digite a placa do veículo para estacionar:");
+            string placa = Console.ReadLine();
+            if (placa == "") {
+                Console.WriteLine("A Placa não pode ser vazia.");
+                AdicionarVeiculo();
+                return;
+            }
+            veiculos.Add(placa);
+            Console.WriteLine($"placa {placa} adicionada com sucesso.");
         }
 
         public void RemoverVeiculo()
@@ -33,7 +40,7 @@ namespace DesafioFundamentos.Models
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
 
                 // TODO: Pedir para o usuário digitar a quantidade de horas que o veículo permaneceu estacionado,
-                // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
+                // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal 
                 // *IMPLEMENTE AQUI*
                 int horas = 0;
                 decimal valorTotal = 0; 

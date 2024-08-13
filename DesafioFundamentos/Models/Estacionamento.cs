@@ -46,7 +46,6 @@ namespace DesafioFundamentos.Models
                 // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
                 valorTotal = precoInicial + precoPorHora * horas;
 
-
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
                 foreach (var veiculo in veiculos)
@@ -54,8 +53,6 @@ namespace DesafioFundamentos.Models
                     if (veiculo == placa) {
                         veiculos.Remove(veiculo);
                         break;
-                    } else {
-                        Console.WriteLine("Veículo não encontrado");
                     }
                 }
 

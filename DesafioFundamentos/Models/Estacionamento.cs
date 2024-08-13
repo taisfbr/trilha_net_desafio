@@ -14,8 +14,6 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
-            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            // *IMPLEMENTE AQUI*
             Console.WriteLine("Digite a placa do veículo para estacionar:");
             string placa = Console.ReadLine();
 
@@ -26,10 +24,7 @@ namespace DesafioFundamentos.Models
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
 
-            // *IMPLEMENTE AQUI*
             string placa = "";
-
-            // Pedir para o usuário digitar a placa e armazenar na variável placa
             placa = Console.ReadLine();
 
             // Verifica se o veículo existe
@@ -37,17 +32,13 @@ namespace DesafioFundamentos.Models
             {
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
 
-                // *IMPLEMENTE AQUI*
                 int horas = 0;
                 decimal valorTotal = 0; 
 
-                // TODO: Pedir para o usuário digitar a quantidade de horas que o veículo permaneceu estacionado,
                 horas = Convert.ToInt32(Console.ReadLine());
-                // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
+              
                 valorTotal = precoInicial + precoPorHora * horas;
 
-                // TODO: Remover a placa digitada da lista de veículos
-                // *IMPLEMENTE AQUI*
                 foreach (var veiculo in veiculos)
                 {
                     if (veiculo == placa) {
@@ -70,8 +61,7 @@ namespace DesafioFundamentos.Models
             if (veiculos.Any())
             {
                 Console.WriteLine("Os veículos estacionados são:");
-                // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
-                // *IMPLEMENTE AQUI*
+                
                 foreach (var veiculo in veiculos)
                 {
                     Console.WriteLine(veiculo);

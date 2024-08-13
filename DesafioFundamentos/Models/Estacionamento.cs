@@ -21,7 +21,7 @@ namespace DesafioFundamentos.Models
 
             if (!string.IsNullOrWhiteSpace(placa)) {
                 veiculos.Add(placa.ToUpper());
-                Console.WriteLine($"Veículo com placa {placa} adicionado com sucesso.");
+                Console.WriteLine($"Veículo com placa {placa.ToUpper()} adicionado com sucesso.");
             } else {
                 Console.WriteLine("Placa inválida. Por favor, insira uma placa válida.");
             }

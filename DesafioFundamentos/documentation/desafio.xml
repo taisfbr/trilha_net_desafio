@@ -1,0 +1,447 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DesafioFundamentos</name>
+    </assembly>
+    <members>
+        <member name="T:DesafioFundamentos.Extensions.DecimalExtensions">
+            <summary>
+            Classe contendo métodos de extensão para manipulação de uma propriedade de tipo Decimal
+            </summary>
+        </member>
+        <member name="M:DesafioFundamentos.Extensions.DecimalExtensions.FormatCurrency(System.Decimal)">
+             <summary>
+             Representação do valor informado no formato monetário
+             referência: https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings
+             </summary>
+             <param name="value">Valor a ser formatado</param>
+             <returns>O valor formatado</returns>
+            
+        </member>
+        <member name="T:DesafioFundamentos.Extensions.StringExtensions">
+            <summary>
+            Classe contendo métodos de extensão  para manipulação de uma propriedade de tipo String
+            </summary>
+        </member>
+        <member name="M:DesafioFundamentos.Extensions.StringExtensions.ContainsValue(System.String)">
+            <summary>
+            Verifica se o valor informado contém algum dado informado.
+            </summary>
+            <param name="value">Valor a ser verificado</param>
+            <returns>O status de validação do valor informado</returns>
+        </member>
+        <member name="M:DesafioFundamentos.Extensions.StringExtensions.ParseInt32(System.String,System.Int32@)">
+            <summary>
+            Verifica se o valor informado é um número inteiro de 32 bits
+            </summary>
+            <param name="value">Valor a ser validado</param>
+            <param name="number">Valor inteiro que será retornado</param>
+            <returns>O status de validação do valor informado</returns>
+        </member>
+        <member name="T:DesafioFundamentos.Models.Parking">
+            <summary>
+            Implementação da classe Estacionamento
+            </summary>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Models.Parking.#ctor(System.Decimal,System.Decimal)">
+            <summary>
+            Método construtor da classe
+            </summary>
+            <param name="initialPrice">Valor da entrada no estacionamento</param>
+            <param name="pricePerHour">Valor cobrado a cada hora estacionado</param>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Models.Parking.CalculateVehicleStay(System.Int32)">
+             <summary>
+             Calcula o valor do período em que o veículo esteve estacionado
+             </summary>
+             <param name="hours">Horas em que o veículo esteve estacionado</param>
+             <returns></returns>
+            
+        </member>
+        <member name="P:DesafioFundamentos.Models.Parking.InitialPrice">
+            <summary>
+            Valor inicial ao estacionar o veículo
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Models.Parking.PricePerHour">
+            <summary>
+            Preço por hora em que o veículo fica estacionado
+            </summary>
+        </member>
+        <member name="T:DesafioFundamentos.Program">
+            <summary>
+            Implementação da classe Program 
+            </summary>
+        </member>
+        <member name="M:DesafioFundamentos.Program.#ctor(DesafioFundamentos.Resources.LocalizationResources)">
+            <summary>
+            Método construtor da classe
+            </summary>
+            <param name="resources">classe contendo as mensagens de recurso da feature Program</param>
+        </member>
+        <member name="M:DesafioFundamentos.Program.ReadDecimalData(System.String,System.Decimal@,System.Boolean@)">
+            <summary>
+            Método utilizado para recuperar e validar um valor decimal informado pelo usuário
+            </summary>
+            <param name="message">Mensagem solicitando um valor decimal para o usuário</param>
+            <param name="value">Valor retornado pela rotina</param>
+            <param name="isValid">Status de execução da rotina</param>
+        </member>
+        <member name="M:DesafioFundamentos.Program.Execute">
+            <summary>
+            Método contendo as rotinas de execução do programa
+            </summary>
+        </member>
+        <member name="M:DesafioFundamentos.Program.CreateLine">
+            <summary>
+            Cria uma nova linha 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DesafioFundamentos.Program.Dispose(System.Boolean)">
+            <summary>
+            Método destrutor da classe 
+            </summary>
+            <param name="disposing">Executa rotinas adicionais</param>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Program.Dispose">
+            <summary>
+            Método destrutor da classe
+            </summary>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Program.Finalize">
+            <summary>
+            Método destrutor da classe no Garbage Collection
+            </summary>
+        </member>
+        <member name="M:DesafioFundamentos.Program.Main(System.String[])">
+            <summary>
+            Método de entrada do aplicativo
+            </summary>
+        </member>
+        <member name="T:DesafioFundamentos.Repositories.ParkingRepository">
+            <summary>
+            Classe que implementa as ações de um veículo no estacionamento
+            </summary>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Repositories.ParkingRepository.#ctor">
+            <summary>
+            Método construtor da classe
+            </summary>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Repositories.ParkingRepository.Dispose(System.Boolean)">
+            <summary>
+            Método destrutor da classe
+            </summary>
+            <param name="disposing">Executa ações adicionais</param>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Repositories.ParkingRepository.Dispose">
+            <summary>
+            Método destrutor da classe, 
+            </summary>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Repositories.ParkingRepository.Finalize">
+            <summary>
+            Método destrutor da classe
+            </summary>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Repositories.ParkingRepository.AddVehicle(System.String)">
+            <summary>
+            Adiciona um veículo a lista
+            </summary>
+            <param name="plate">Placa do veículo</param>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Repositories.ParkingRepository.RemoveVehicle(System.String)">
+            <summary>
+            Remove o veículo da lista
+            </summary>
+            <param name="plate">Placa do veículo</param>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Repositories.ParkingRepository.ListVehicles">
+            <summary>
+            Lista os veículos estacionados
+            </summary>
+            <returns>Os veículos estacionados</returns>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Repositories.ParkingRepository.VehicleExists(System.String)">
+            <summary>
+            Verifica se o veículo foi estacionado
+            </summary>
+            <param name="plate">Placa do veículo</param>
+            <returns>O status da consulta</returns>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Repositories.ParkingRepository.CountVehicles">
+            <summary>
+            Efeuta a contagem de veículos estacionados
+            </summary>
+            <returns>Total de veículos estacionados</returns>
+            
+        </member>
+        <member name="T:DesafioFundamentos.Resources.LocalizationResources">
+            <summary>
+            Classe contendo as mensagens utilizadas no programa 
+            </summary>
+        </member>
+        <member name="M:DesafioFundamentos.Resources.LocalizationResources.#ctor">
+            <summary>
+            Método construtor da classe
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.LocalizationResources.ProgramResources">
+            <summary>
+            Classe contendo as mensagens utilizadas na feature Program
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.LocalizationResources.ParkingResources">
+            <summary>
+            Classe contendo as mensagens utilizadas na feature Estacionamento
+            </summary>
+        </member>
+        <member name="T:DesafioFundamentos.Resources.ParkingResources">
+            <summary>
+            Classe contendo as mensagens utilizadas na feature Estacionamento
+            </summary>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Resources.ParkingResources.#ctor">
+            <summary>
+            Método construtor da classe
+            </summary>
+            
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ParkingResources.AddVehicle">
+            <summary>
+            Mensagem solicitando a placa de um veículo para a entrada no estacionamento
+            </summary>
+            
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ParkingResources.RemoveVehicle">
+            <summary>
+            Mensagem solicitando a placa de um veículo para a saída do estacionamento
+            </summary>
+            
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ParkingResources.HoursParked">
+            <summary>
+            Mensagem solicitando a quantidade de horas em que o veículo ficou estacionado
+            </summary>
+            
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ParkingResources.VehicleNotLocated">
+            <summary>
+            Mensagem informando que o veículo não foi estacionado
+            </summary>
+            
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ParkingResources.AvailableVehicles">
+            <summary>
+            Mensagem informando os veículos estacionados
+            </summary>
+            
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ParkingResources.EmptyVehicles">
+            <summary>
+            Mensagem informando que não há veículos estacionados
+            </summary>
+            
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ParkingResources.InvalidVehiclePlate">
+            <summary>
+            Mensagem informando que a placa do veículo é inválida.
+            </summary>
+            
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ParkingResources.VehiclePayment">
+            <summary>
+            Mensagem informando que o véiculo informado foi removido e o valor total do período em que o veículo ficou no estacionamento
+            </summary>
+            
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ParkingResources.InvalidHours">
+            <summary>
+            Mensagem informando que o total de horas informado é inválido.
+            </summary>
+            
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ParkingResources.EmptyHours">
+            <summary>
+            Mensagem infomando que não foi informado o total de horas
+            </summary>
+            
+        </member>
+        <member name="T:DesafioFundamentos.Resources.ProgramResources">
+             <summary>
+             Classe contendo as mensagens utilizadas na feature Program
+             </summary>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Resources.ProgramResources.#ctor">
+            <summary>
+            Método construtor da classe
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.WelcomeMessage">
+            <summary>
+            Mensagem de início do programa
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.InitialPriceMessage">
+            <summary>
+            Mensagem solicitando o valor inicial de estacionamento do veículo
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.PricePerHourMessage">
+            <summary>
+            Mensagem solicitando o valor por hora em que o veículo fica no estacionamento
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.InvalidOptionMessage">
+            <summary>
+            Mensagem informando que foi informada uma opção inválida na seleção de um item do menu
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.FinishMessage">
+            <summary>
+            Exibe a mensagem de término de execução do aplicativo
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.PostFinishMessage">
+            <summary>
+            Mensagem adicional de término de execução do aplicativo
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.ErrorMessage">
+            <summary>
+            Mensagem de erro ao informar um valor inválido para os campos valor inicial ou preço por hora
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.SelectOptionMessage">
+            <summary>
+            Mensagem solicitando que o usuário selecione uma opção do menu
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.AddVehicleOptionMessage">
+            <summary>
+            Mensagem exibindo opção para cadastrar um veículo
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.RemoveVehicleOptionMessage">
+            <summary>
+            Mensagem exibindo opção para remover e exibir o total do valor referente ao período em que o veículo ficou estacionado
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.ListVehiclesOptionMessage">
+            <summary>
+            Mensagem exibindo opção para listar veículos
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.FinishOptionMessage">
+            <summary>
+            Mensagem exibindo opção para finalizar o programa
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.InvalidValueMessage">
+            <summary>
+            Mensagem informando que foi digitado um valor inválido para o campo
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.ApplicationNameMessage">
+            <summary>
+            Mensagem informando o nome do aplicativo
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.ApplicationMenuMessage">
+            <summary>
+            Mensagem informando o menu do aplicativo
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.InitialPriceInfoMessage">
+            <summary>
+            Mensagem que exibe o valor inicial ao estacionar o veículo
+            </summary>
+        </member>
+        <member name="P:DesafioFundamentos.Resources.ProgramResources.PricePerHourInfoMessage">
+            <summary>
+            Mensagem que exibe o valor por hora em que o veículo fique estacionado
+            </summary>
+        </member>
+        <member name="T:DesafioFundamentos.Views.ParkingController">
+            <summary>
+            Classe que implementa os métodos para acesso as ações de um estacionamento.
+            </summary>
+            <param name="repository">classe contendo os métodos para gerenciamento do estacionamento</param>
+            <param name="resources">classe contendo as mensagens de recurso da feature.</param>        
+            
+        </member>
+        <member name="M:DesafioFundamentos.Views.ParkingController.#ctor(DesafioFundamentos.Repositories.ParkingRepository,DesafioFundamentos.Resources.ParkingResources)">
+            <summary>
+            Classe que implementa os métodos para acesso as ações de um estacionamento.
+            </summary>
+            <param name="repository">classe contendo os métodos para gerenciamento do estacionamento</param>
+            <param name="resources">classe contendo as mensagens de recurso da feature.</param>        
+            
+        </member>
+        <member name="M:DesafioFundamentos.Views.ParkingController.SetParking(DesafioFundamentos.Models.Parking)">
+            <summary>
+            Método utilizado para configurar a entidade Estacionamento
+            </summary>
+            <param name="parking">>classe contendo valores padrão e métodos para o cálculo do valor conforme o período em que o veículo esteve estacionado.</param>
+        </member>
+        <member name="M:DesafioFundamentos.Views.ParkingController.Dispose(System.Boolean)">
+            <summary>
+            Método destrutor da classe 
+            </summary>
+            <param name="disposing">Executa rotinas adicionais</param>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Views.ParkingController.Dispose">
+            <summary>
+            Método destrutor da classe
+            </summary>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Views.ParkingController.Finalize">
+            <summary>
+            Método destrutor da classe no Garbage Collection
+            </summary>
+        </member>
+        <member name="M:DesafioFundamentos.Views.ParkingController.AddVehicle">
+            <summary>
+            Entrada de um veículo no estacionamento
+            </summary>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Views.ParkingController.ReadIntegerData(System.String,System.Int32@,System.Boolean@)">
+            <summary>
+            Método utilizado para recuperar e validar um valor decimal informado pelo usuário
+            </summary>
+            <param name="message">Mensagem solicitando um valor decimal para o usuário</param>
+            <param name="value">Valor retornado pela rotina</param>
+            <param name="isValid">Status de execução da rotina</param>
+        </member>
+        <member name="M:DesafioFundamentos.Views.ParkingController.RemoveVehicle">
+            <summary>
+            Saída de um veículo do estacionamento
+            </summary>
+            
+        </member>
+        <member name="M:DesafioFundamentos.Views.ParkingController.ListVehicles">
+            <summary>
+            Veículos estacionados
+            </summary>
+        </member>
+    </members>
+</doc>

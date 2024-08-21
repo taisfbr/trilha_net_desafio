@@ -17,6 +17,8 @@ namespace DesafioFundamentos.Models
             // Pede para o usuário digitar a placa do veículo e já armazena com todas as letras maiúsculas
             Console.WriteLine("Digite a placa do veículo para estacionar:");
             string placa = Console.ReadLine().ToUpper();
+
+            //Verifica se a placa é válida comparando a quantidade de caracteres e se existem espaços em branco, para que possa fazer a adição do veiculo
             if(placa.Length != 7 || string.IsNullOrWhiteSpace(placa))
             {
                 Console.WriteLine("Quantidade de digitos digitados é menor ou mais que 7 ou possui espaços, tente novamente");

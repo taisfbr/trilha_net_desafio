@@ -17,7 +17,26 @@ namespace DesafioFundamentos.Models
             // Pede para o usuário digitar a placa do veículo e já armazena com todas as letras maiúsculas
             Console.WriteLine("Digite a placa do veículo para estacionar:");
             string placa = Console.ReadLine().ToUpper();
-            veiculos.Add(placa);
+            if(placa.Length != 7 || string.IsNullOrWhiteSpace(placa))
+            {
+                Console.WriteLine("Quantidade de digitos digitados é menor ou mais que 7 ou possui espaços, tente novamente");
+            }
+
+            else
+            {
+                if(veiculos.Contains(placa))
+                {
+                    Console.WriteLine("Veículo já está estacionado");
+                }
+
+                else
+                {
+                    veiculos.Add(placa);
+                }
+            }
+                
+
+            
         }
 
         public void RemoverVeiculo()

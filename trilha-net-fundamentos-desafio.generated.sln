@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "trilha-net-fundamentos-desafio", "trilha-net-fundamentos-desafio.csproj", "{646CC1DB-9256-464A-9E32-D8A54917DDD6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioFundamentos", "DesafioFundamentos\DesafioFundamentos.csproj", "{DE13565C-9F00-4797-8493-44349462F33F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{646CC1DB-9256-464A-9E32-D8A54917DDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{646CC1DB-9256-464A-9E32-D8A54917DDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{646CC1DB-9256-464A-9E32-D8A54917DDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{646CC1DB-9256-464A-9E32-D8A54917DDD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE13565C-9F00-4797-8493-44349462F33F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE13565C-9F00-4797-8493-44349462F33F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE13565C-9F00-4797-8493-44349462F33F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE13565C-9F00-4797-8493-44349462F33F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA2A2794-18C1-4DF7-9F03-ADCA845381FF}
+	EndGlobalSection
+EndGlobal

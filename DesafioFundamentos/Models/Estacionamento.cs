@@ -16,7 +16,7 @@ namespace DesafioFundamentos.Models
         {
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
             // *IMPLEMENTE AQUI*
-            Console.WriteLine("Digite a placa do veículo para estacionar:");
+            Console.WriteLine("Digite a placa do carro (no formato AAA0A00) para adicionar a lista de clientes:");
         }
 
         public void RemoverVeiculo()

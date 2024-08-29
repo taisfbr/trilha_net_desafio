@@ -8,10 +8,16 @@ namespace DesafioFundamentos.Models
         private decimal precoPorHora = 3;
         private List<string> veiculos = new List<string>();
 
+
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
         {
             this.precoInicial = precoInicial;
             this.precoPorHora = precoPorHora;
+
+            // Inicializa a lista de veículos com alguns exemplos
+            veiculos.Add("ABC1234");
+            veiculos.Add("XYZ5678");
+            veiculos.Add("LMN9101");
         }
 
         public void AdicionarVeiculo()

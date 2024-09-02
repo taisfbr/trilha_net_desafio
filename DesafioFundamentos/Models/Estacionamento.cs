@@ -43,7 +43,7 @@ namespace DesafioFundamentos.Models
                 // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
                 // *IMPLEMENTE AQUI*
                 // FEITO
-                
+
 
 
                 decimal valorTotal = precoInicial + (precoPorHora * horas);
@@ -51,7 +51,7 @@ namespace DesafioFundamentos.Models
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
                 // FEITO
-                
+
 
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
                 veiculos.Remove(placa);
@@ -83,3 +83,4 @@ namespace DesafioFundamentos.Models
         }
     }
 }
+// Finalizado

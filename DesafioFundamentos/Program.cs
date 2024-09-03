@@ -1,35 +1,41 @@
-﻿using DesafioFundamentos.Models;
+﻿using DesafioFundamentos;
 
-// Coloca o encoding para UTF8 para exibir acentuação
+Console.Clear();
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 decimal precoInicial = 0;
 decimal precoPorHora = 0;
 
-Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
-                  "Digite o preço inicial:");
+Console.WriteLine($"Seja bem vindo ao sistema de estacionamento!\n\n" +
+                  "Por gentileza digite o preço fixo para estacionar: \n");
 precoInicial = Convert.ToDecimal(Console.ReadLine());
 
-Console.WriteLine("Agora digite o preço por hora:");
+Console.WriteLine($"\nAgora digite o preço por hora: \n");
 precoPorHora = Convert.ToDecimal(Console.ReadLine());
 
-// Instancia a classe Estacionamento, já com os valores obtidos anteriormente
 Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
 
 string opcao = string.Empty;
 bool exibirMenu = true;
 
-// Realiza o loop do menu
+// TODO: Cadastro de usuario do Sistema e Cadastro de Usuario do Estacionamento vinculado a Placa!!
 while (exibirMenu)
 {
     Console.Clear();
-    Console.WriteLine("Digite a sua opção:");
-    Console.WriteLine("1 - Cadastrar veículo");
-    Console.WriteLine("2 - Remover veículo");
-    Console.WriteLine("3 - Listar veículos");
-    Console.WriteLine("4 - Encerrar");
+    Console.WriteLine( 
+        
+                    $"Digite a sua opção: \n\n" + 
+                    
+                    "1 - Cadastrar veículo \n" +
+                    "2 - Remover veículo \n" +
+                    "3 - Listar veículos \n" +
+                    "\n0 - Encerrar \n\n"
+                    
+                    );
+    
+    opcao = Console.ReadLine();
 
-    switch (Console.ReadLine())
+    switch (opcao)
     {
         case "1":
             es.AdicionarVeiculo();
@@ -43,7 +49,7 @@ while (exibirMenu)
             es.ListarVeiculos();
             break;
 
-        case "4":
+        case "0":
             exibirMenu = false;
             break;
 
@@ -52,8 +58,12 @@ while (exibirMenu)
             break;
     }
 
-    Console.WriteLine("Pressione uma tecla para continuar");
+    if (opcao != "0" )
+    {
+    Console.WriteLine($"\nPressione uma tecla para continuar");
     Console.ReadLine();
-}
+    }
+    
+    }
 
 Console.WriteLine("O programa se encerrou");

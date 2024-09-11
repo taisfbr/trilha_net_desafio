@@ -46,7 +46,6 @@ namespace DesafioFundamentos.Models
                 }
                 catch (Exception error)
                 {
-                    Console.WriteLine(error.Message);
                     Console.WriteLine("Desculpe, verifique se digitou a hora corretamente.");
                 }
                 

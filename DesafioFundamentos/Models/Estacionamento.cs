@@ -1,9 +1,12 @@
+using System.Linq.Expressions;
+
 namespace DesafioFundamentos.Models
 {
     public class Estacionamento
     {
         private decimal precoInicial = 0;
         private decimal precoPorHora = 0;
+        private string placa = "";
         private List<string> veiculos = new List<string>();
 
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
@@ -14,9 +17,18 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
+
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            // *IMPLEMENTE AQUI*
             Console.WriteLine("Digite a placa do veículo para estacionar:");
+            string placa = Console.ReadLine();
+
+            if(veiculos.Any(x => x.ToUpper() == placa.ToUpper())){
+                Console.WriteLine("Veiculo já consta no estacionamento");
+            } else
+            {
+                veiculos.Add(placa);
+                
+            }
         }
 
         public void RemoverVeiculo()

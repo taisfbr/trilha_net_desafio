@@ -13,8 +13,8 @@ namespace DesafioFundamentos.Models{
         }
         public bool RemoverVeiculo(string placa, int horas){
             if (veiculos.Any(x => x.ToUpper() == placa.ToUpper())){
-                decimal valorTotal = precoInicial + (precoPorHora * horas);
                 veiculos.Remove(placa);
+                decimal valorTotal = precoInicial + (precoPorHora * horas);
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
                 return true;
             }else{

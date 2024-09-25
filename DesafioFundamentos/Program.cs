@@ -17,7 +17,7 @@ string opcao = string.Empty;
 bool exibirMenu = true;
 string placa;
 
-while (exibirMenu){
+while(exibirMenu){
 
     Console.Clear();
     Console.WriteLine("Digite a sua opção:");
@@ -52,5 +52,4 @@ while (exibirMenu){
     Console.WriteLine("Aperte uma tecla para continuar");
     Console.ReadLine();
 }
-
 Console.WriteLine("O programa se encerrou");

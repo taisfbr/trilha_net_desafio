@@ -6,22 +6,19 @@ Console.OutputEncoding = System.Text.Encoding.UTF8;
 decimal precoInicial = 0;
 decimal precoPorHora = 0;
 
-Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
-                  "Digite o preço inicial:");
+Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n"+"Digite o preço inicial:");
 precoInicial = Convert.ToDecimal(Console.ReadLine());
 
 Console.WriteLine("Agora digite o preço por hora:");
 precoPorHora = Convert.ToDecimal(Console.ReadLine());
 
-// Instancia a classe Estacionamento, já com os valores obtidos anteriormente
 Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
-
 string opcao = string.Empty;
 bool exibirMenu = true;
+string placa;
 
-// Realiza o loop do menu
-while (exibirMenu)
-{
+while (exibirMenu){
+
     Console.Clear();
     Console.WriteLine("Digite a sua opção:");
     Console.WriteLine("1 - Cadastrar veículo");
@@ -29,30 +26,30 @@ while (exibirMenu)
     Console.WriteLine("3 - Listar veículos");
     Console.WriteLine("4 - Encerrar");
 
-    switch (Console.ReadLine())
-    {
+    switch (Console.ReadLine()){
         case "1":
-            es.AdicionarVeiculo();
+            Console.WriteLine("Digite a placa do veículo para estacionar:");
+            placa = Console.ReadLine();
+            es.AdicionarVeiculo(placa);
             break;
-
         case "2":
-            es.RemoverVeiculo();
+            Console.WriteLine("Digite a placa do veículo para remover:");
+            placa = Console.ReadLine();
+            Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+            int horas = int.Parse(Console.ReadLine());
+            es.RemoverVeiculo(placa,horas);
             break;
-
         case "3":
             es.ListarVeiculos();
             break;
-
         case "4":
             exibirMenu = false;
             break;
-
         default:
             Console.WriteLine("Opção inválida");
             break;
     }
-
-    Console.WriteLine("Pressione uma tecla para continuar");
+    Console.WriteLine("Aperte uma tecla para continuar");
     Console.ReadLine();
 }
 

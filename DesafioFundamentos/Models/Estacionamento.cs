@@ -26,7 +26,7 @@ namespace DesafioFundamentos.Models
                     break;
                 }
                 veiculos.Add(veiculo);
-                Console.WriteLine("Veículo adicionado com sucesso!");
+                Console.Write("Veículo adicionado com sucesso!");
 
             }
             

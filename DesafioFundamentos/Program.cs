@@ -13,7 +13,7 @@ Console.WriteLine("Type the hourly rate:");
 precoPorHora = Convert.ToDecimal(Console.ReadLine());
 
 // Instancia a classe Estacionamento, já com os valores obtidos anteriormente
-var es = new Estacionamento(precoInicial, precoPorHora);
+var es = new ParkingModel(precoInicial, precoPorHora);
 
 string opcao = string.Empty;
 bool exibirMenu = true;
@@ -26,7 +26,8 @@ while (exibirMenu)
     Console.WriteLine("1 - Add new vehicle");
     Console.WriteLine("2 - Remove vehicle");
     Console.WriteLine("3 - List all vehicles");
-    Console.WriteLine("4 - Logout");
+    Console.WriteLine("4 - Report System");
+    Console.WriteLine("5 - Logout");
 
     switch (Console.ReadLine())
     {
@@ -43,6 +44,10 @@ while (exibirMenu)
             break;
 
         case "4":
+            es.GetAnalysis();
+            break;
+
+        case "5":
             exibirMenu = false;
             break;
 

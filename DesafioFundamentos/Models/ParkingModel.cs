@@ -1,15 +1,15 @@
 namespace DesafioFundamentos.Models
 {
-    public class Estacionamento
+    public class ParkingModel
     {
         private decimal initialPrice = 0;
-        private decimal priceForHour = 0;
-        private List<string> vehicles = new List<string>();
+        private decimal pricePerHour = 0;
+        private List<VehicleModel> vehicles = new List<VehicleModel>();
 
-        public Estacionamento(decimal precoInicial, decimal precoPorHora)
+        public ParkingModel(decimal precoInicial, decimal precoPorHora)
         {
             this.initialPrice = precoInicial;
-            this.priceForHour = precoPorHora;
+            this.pricePerHour = precoPorHora;
         }
 
         public void AddNewVehicle()
@@ -25,11 +25,9 @@ namespace DesafioFundamentos.Models
             }
             else
             {
-                vehicles.Add(newPlate);
+                vehicles.Add(new VehicleModel(newPlate));
                 Console.WriteLine("✅ New vehicle added into the system ✅");
             }
-
-
 
         }
 
@@ -53,13 +51,14 @@ namespace DesafioFundamentos.Models
                 Console.WriteLine("How long you stayed in the parking lot? (Type hours)");
                 string stayHours = Console.ReadLine();
 
-                decimal totalValue = initialPrice + (Decimal.Parse(stayHours) * priceForHour);
+                decimal totalValue = initialPrice + (Decimal.Parse(stayHours) * pricePerHour);
 
                 // ===== REMOVING THE VEHICLE
-                vehicles = vehicles.FindAll(p => !p.Equals(removeThisPlate));
-                
+                var removedVehicle = vehicles.Find(v => v.Plate.ToUpper().Equals(removeThisPlate));
+                vehicles = vehicles.FindAll(p => !p.Plate.Equals(removeThisPlate));
+
                 // ===== SHOW THE VALUES AND THE PLACE IN TERMINAL
-                Console.WriteLine($"All done! Vehicle {removeThisPlate} is removed. Total value for our service: {totalValue}!");
+                Console.WriteLine($"DETAILS -----.\n🔵 Serial Plate: {removedVehicle.Plate}\n🔵 Total $:{totalValue}\n🔵 Start in: {removedVehicle.RegistedAt.ToString("yyyy-MM-dd HH:mm")}\n✅ Vehicle is removed");
 
             }
         }
@@ -72,7 +71,7 @@ namespace DesafioFundamentos.Models
                 Console.WriteLine("🔵 All vehicles Parking in our parking:\n");
                 for (int i = 0; i < vehicles.Count; i++)
                 {
-                    Console.WriteLine($"{i + 1} - Vehicle: {vehicles[i]}");
+                    Console.WriteLine($"{i + 1} - Vehicle: {vehicles[i].Plate}");
                 }
                 Console.WriteLine("-----------------");
             }
@@ -83,6 +82,21 @@ namespace DesafioFundamentos.Models
         }
 
 
+        public void GetAnalysis()
+        {
+            Console.WriteLine(" 📊 PARKING REPORT 📊");
+            Console.WriteLine($" 🔵 Total Vehicles: {vehicles.Count}");
+            Console.WriteLine($" 🔵 Price per Hour: ${pricePerHour}");
+            Console.WriteLine($" 🔵 Starting Price: ${initialPrice}");
+            Console.WriteLine($" 🚘 VEHICLES");
+            for (int i = 0; i < vehicles.Count; i++)
+            {
+                Console.WriteLine($"{i+1} - Vehicle: {vehicles[i].Plate} | Register At: ${vehicles[i].RegistedAt.ToString("yyyy-MM-dd HH:mm")}");
+            }
+            Console.WriteLine(" -----------------------");
+        }
+
+
         /// <summary>
         /// Check if the new vehicle already added in our system
         /// </summary>
@@ -90,7 +104,7 @@ namespace DesafioFundamentos.Models
         /// <returns></returns>
         private bool AlreadyRegisteredVehicle(string plate)
         {
-            bool registered = vehicles.Any(x => x.ToUpper() == plate.ToUpper());
+            bool registered = vehicles.FindIndex(x => x.Plate.ToUpper() == plate.ToUpper()) != -1; // != -1 meaning that exist
             return registered;
         }
     }

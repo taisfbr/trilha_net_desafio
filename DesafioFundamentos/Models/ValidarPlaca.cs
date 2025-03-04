@@ -9,9 +9,7 @@ namespace DesafioFundamentos.Models
         public bool Validator(string placa)
         {
             if (string.IsNullOrWhiteSpace(placa))
-                return false;
-
-            placa = placa.Replace("-", "");
+                return false;           
 
             return placaRegex.IsMatch(placa);
         }

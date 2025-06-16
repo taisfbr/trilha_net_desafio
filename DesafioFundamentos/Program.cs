@@ -57,3 +57,5 @@ while (exibirMenu)
 }
 
 Console.WriteLine("O programa se encerrou");
+
+// Aqui estão listadas: As regras de negócio, as opções disponíveis para o usuário, e toda a base do código.

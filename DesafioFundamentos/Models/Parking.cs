@@ -45,7 +45,7 @@ namespace DesafioFundamentos.Models
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
                 var hoursOfStay = Console.ReadLine();
                 var amountToPay = CalculatePricePerHour(hoursOfStay);
-                Console.WriteLine($"O veículo {plate} foi removido e o preço total foi de: R$ {amountToPay}");
+                Console.WriteLine($"O veículo {car}:{plate} foi removido e o preço total foi de: R$ {amountToPay}");
                 vehicles.Remove(plate);
             }
             catch (KeyNotFoundException e)

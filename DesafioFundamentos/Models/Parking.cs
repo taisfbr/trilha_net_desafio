@@ -6,17 +6,17 @@ namespace DesafioFundamentos.Models
     public class Parking
     {
         private decimal startingPrice = 0;
-        private decimal priceForHour = 0;
+        private decimal pricePerHour = 0;
         public Dictionary<string, string> vehicles = new Dictionary<string, string>();
         private string plate = "";
 
         public Parking(decimal startingPrice, decimal priceForHour)
         {
             this.startingPrice = startingPrice;
-            this.priceForHour = priceForHour;
+            this.pricePerHour = priceForHour;
         }
 
-        public void AdicionarVeiculo()
+        public void AddVehicle()
         {
             var car = new Vehicle();
             Console.WriteLine("Digite a modelo do veículo para estacionar:");
@@ -31,7 +31,7 @@ namespace DesafioFundamentos.Models
             vehicles.Add(car.Plate, car.Model);
         }
 
-        public void RemoverVeiculo()
+        public void RemoveVehicle()
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
             plate = Console.ReadLine();
@@ -44,7 +44,7 @@ namespace DesafioFundamentos.Models
                 var car = vehicles[plate];
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
                 var hoursOfStay = Console.ReadLine();
-                var amountToPay = CalculatePriceForHour(hoursOfStay);
+                var amountToPay = CalculatePricePerHour(hoursOfStay);
                 Console.WriteLine($"O veículo {plate} foi removido e o preço total foi de: R$ {amountToPay}");
                 vehicles.Remove(plate);
             }
@@ -56,12 +56,12 @@ namespace DesafioFundamentos.Models
             }
         }
 
-        private decimal CalculatePriceForHour(string hoursOfStay)
+        private decimal CalculatePricePerHour(string hoursOfStay)
         {
-            return startingPrice + (priceForHour * Convert.ToDecimal(hoursOfStay));
+            return startingPrice + (pricePerHour * Convert.ToDecimal(hoursOfStay));
         }
         
-        public void ListarVeiculos()
+        public void GetAllvehicles()
         {
             if (vehicles.Any())
             {

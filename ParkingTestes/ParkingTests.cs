@@ -10,7 +10,7 @@ public class ParkingTests
         var parking = new Parking(5, 2);
         Console.SetIn(new StringReader("Carro\nAAA00AA"));
         
-        parking.AdicionarVeiculo();
+        parking.AddVehicle();
         
         Assert.True(parking.vehicles.ContainsKey("AAA00AA"));
         Assert.Equal("Carro", parking.vehicles["AAA00AA"]);
@@ -22,7 +22,7 @@ public class ParkingTests
         var parking = new Parking(5, 2);
         Console.SetIn(new StringReader("Carro\nINVALID"));
         
-        parking.AdicionarVeiculo();
+        parking.AddVehicle();
         
         Assert.False(parking.vehicles.ContainsKey("INVALID"));
     }
@@ -34,7 +34,7 @@ public class ParkingTests
         parking.vehicles.Add("AAA00AA", "Carro");
         Console.SetIn(new StringReader("AAA00AA\n2"));
         
-        parking.RemoverVeiculo();
+        parking.RemoveVehicle();
         
         Assert.False(parking.vehicles.ContainsKey("AAA00AA"));
     }
@@ -45,7 +45,7 @@ public class ParkingTests
         var parking = new Parking(5, 2);
         Console.SetIn(new StringReader("AAA00AA\n2"));
         
-        parking.RemoverVeiculo();
+        parking.RemoveVehicle();
         
         Assert.Empty(parking.vehicles);
     }
@@ -60,7 +60,7 @@ public class ParkingTests
         var output = new StringWriter();
         Console.SetOut(output);
         
-        parking.ListarVeiculos();
+        parking.GetAllvehicles();
         
         var result = output.ToString();
         Assert.Contains("Modelo:Carro  -  Placa: AAA00AA", result);
@@ -75,7 +75,7 @@ public class ParkingTests
         var output = new StringWriter();
         Console.SetOut(output);
         
-        parking.ListarVeiculos();
+        parking.GetAllvehicles();
         
         var result = output.ToString();
         Assert.Contains("Não há veículos estacionados.", result);

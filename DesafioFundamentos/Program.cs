@@ -44,6 +44,11 @@ while (exibirMenu)
             break;
 
         case "4":
+            if (es.ExistemVeiculosEstacionados()) {
+                Console.WriteLine("Não é possível encerrar o programa pois o estacionamento não está vazio.");
+                es.ListarVeiculos();
+                break;
+            };
             exibirMenu = false;
             break;
 

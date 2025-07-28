@@ -52,6 +52,25 @@ while (exibirMenu)
             break;
     }
 
+    if (!exibirMenu)
+    {
+        Console.WriteLine("Tem certeza que deseja encerrar o programa? S/N");
+        string resposta = Console.ReadLine().ToUpper();
+        if (resposta == "S")
+        {
+            Environment.Exit(1);
+        }
+        else if (resposta == "N")
+        {
+            exibirMenu = true;
+        }
+        else
+        {
+            Console.WriteLine("Digite uma resposta valida");
+            exibirMenu = true;
+        }
+    }
+
     Console.WriteLine("Pressione uma tecla para continuar");
     Console.ReadLine();
 }

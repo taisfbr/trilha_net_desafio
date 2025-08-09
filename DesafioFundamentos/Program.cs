@@ -23,6 +23,8 @@ bool exibirMenu = true;
 while (exibirMenu)
 {
     Console.Clear();
+    Console.WriteLine($"Preço inicial: R$ {precoInicial}\n " +
+                        $"Preço por hora: R$ {precoPorHora}");
     Console.WriteLine("Digite a sua opção:");
     Console.WriteLine("1 - Cadastrar veículo");
     Console.WriteLine("2 - Remover veículo");
@@ -52,7 +54,7 @@ while (exibirMenu)
             break;
     }
 
-    Console.WriteLine("Pressione uma tecla para continuar");
+    Console.WriteLine("Pressione ENTER para continuar");
     Console.ReadLine();
 }
 

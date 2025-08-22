@@ -1,59 +1,79 @@
-﻿using DesafioFundamentos.Models;
+﻿// See https://aka.ms/new-console-template for more information
+using DesafioFundamentos.Models;
+using DesafioFundamentos.Models;
 
-// Coloca o encoding para UTF8 para exibir acentuação
-Console.OutputEncoding = System.Text.Encoding.UTF8;
+using System.Text;
+
+// Configura UTF8 para acentuação
+Console.OutputEncoding = Encoding.UTF8;
 
 decimal precoInicial = 0;
 decimal precoPorHora = 0;
 
-Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
-                  "Digite o preço inicial:");
+Console.WriteLine("=======================================");
+Console.WriteLine("   Bem-vindo ao Sistema de Estacionamento");
+Console.WriteLine("=======================================\n");
+
+Console.Write("Digite o preço inicial: R$ ");
 precoInicial = Convert.ToDecimal(Console.ReadLine());
 
-Console.WriteLine("Agora digite o preço por hora:");
+Console.Write("Digite o preço por hora: R$ ");
 precoPorHora = Convert.ToDecimal(Console.ReadLine());
 
-// Instancia a classe Estacionamento, já com os valores obtidos anteriormente
-Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
+// Instancia da classe Estacionamento
+Estacionamento estacionamento = new Estacionamento(precoInicial, precoPorHora);
 
-string opcao = string.Empty;
+string opcao;
 bool exibirMenu = true;
 
-// Realiza o loop do menu
 while (exibirMenu)
 {
     Console.Clear();
-    Console.WriteLine("Digite a sua opção:");
+    Console.WriteLine("=======================================");
+    Console.WriteLine("           MENU PRINCIPAL");
+    Console.WriteLine("=======================================");
     Console.WriteLine("1 - Cadastrar veículo");
     Console.WriteLine("2 - Remover veículo");
     Console.WriteLine("3 - Listar veículos");
     Console.WriteLine("4 - Encerrar");
+    Console.WriteLine("=======================================");
+    Console.Write("Escolha uma opção: ");
+    opcao = Console.ReadLine();
 
-    switch (Console.ReadLine())
+    Console.Clear();
+
+    switch (opcao)
     {
         case "1":
-            es.AdicionarVeiculo();
+            estacionamento.AdicionarVeiculo();
             break;
 
         case "2":
-            es.RemoverVeiculo();
+            estacionamento.RemoverVeiculo();
             break;
 
         case "3":
-            es.ListarVeiculos();
+            estacionamento.ListarVeiculos();
             break;
 
         case "4":
             exibirMenu = false;
+            Console.WriteLine("Encerrando o sistema...");
             break;
 
         default:
-            Console.WriteLine("Opção inválida");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Opção inválida! Tente novamente.");
+            Console.ResetColor();
             break;
     }
 
-    Console.WriteLine("Pressione uma tecla para continuar");
-    Console.ReadLine();
+    if (exibirMenu)
+    {
+        Console.WriteLine("\nPressione qualquer tecla para voltar ao menu...");
+        Console.ReadKey();
+    }
 }
 
-Console.WriteLine("O programa se encerrou");
+Console.WriteLine("Sistema encerrado. Até logo!");
+

@@ -8,7 +8,7 @@ namespace DesafioFundamentos.Models
 
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
         {
-            this.precoInicial = precoInicial;
+                this.precoInicial = precoInicial;
             this.precoPorHora = precoPorHora;
         }
 
@@ -27,10 +27,13 @@ namespace DesafioFundamentos.Models
 
             if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
             {
-                Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
-
-                int horas = 0;
-                decimal valorTotal = precoInicial+precoPorHora*horas; 
+Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+int horas;
+while (!int.TryParse(Console.ReadLine(), out horas) || horas < 0)
+{
+    Console.WriteLine("Por favor, digite um número válido de horas:");
+}
+decimal valorTotal = precoInicial + precoPorHora * horas;
 veiculos.Remove(placa);
 
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
@@ -43,7 +46,6 @@ veiculos.Remove(placa);
 
         public void ListarVeiculos()
         {
-            // Verifica se há veículos no estacionamento
             if (veiculos.Any())
             {
                 Console.WriteLine("Os veículos estacionados são:");

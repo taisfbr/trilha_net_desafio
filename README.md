@@ -1,38 +1,63 @@
-# DIO - Trilha .NET - Fundamentos
-www.dio.me
+---
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de fundamentos, da trilha .NET da DIO.
+# Sistema de Estacionamento 🚗
 
-## Contexto
-Você foi contratado para construir um sistema para um estacionamento, que será usado para gerenciar os veículos estacionados e realizar suas operações, como por exemplo adicionar um veículo, remover um veículo (e exibir o valor cobrado durante o período) e listar os veículos.
+Projeto desenvolvido como parte do desafio de Fundamentos em C# da DIO.
+O objetivo é criar um sistema funcional de estacionamento, aplicando conceitos de Programação Orientada a Objetos, manipulação de listas e tratamento de entradas do usuário.
 
-## Proposta
-Você precisará construir uma classe chamada "Estacionamento", conforme o diagrama abaixo:
-![Diagrama de classe estacionamento](diagrama_classe_estacionamento.png)
+## Funcionalidades
 
-A classe contém três variáveis, sendo:
+* Adicionar veículos no estacionamento;
+* Remover veículos e calcular o valor total com base no tempo estacionado;
+* Listar veículos estacionados;
+* Validação de entrada numérica para o tempo de permanência;
+* Validação de placas de veículos no **padrão Mercosul** (AAA1A23);
+* Forçar as placas para maiúsculo automaticamente.
 
-**precoInicial**: Tipo decimal. É o preço cobrado para deixar seu veículo estacionado.
+## Tecnologias Utilizadas
 
-**precoPorHora**: Tipo decimal. É o preço por hora que o veículo permanecer estacionado.
+* C#
+* .NET 6
+* Console Application
 
-**veiculos**: É uma lista de string, representando uma coleção de veículos estacionados. Contém apenas a placa do veículo.
+## Diferenciais Implementados
 
-A classe contém três métodos, sendo:
+* Validação de placas no **padrão Mercosul**;
+* Interface de console clara e interativa;
+* Código modular e organizado em métodos (`AdicionarVeiculo`, `RemoverVeiculo`, `ListarVeiculos`).
 
-**AdicionarVeiculo**: Método responsável por receber uma placa digitada pelo usuário e guardar na variável **veiculos**.
+## Pré-requisitos
 
-**RemoverVeiculo**: Método responsável por verificar se um determinado veículo está estacionado, e caso positivo, irá pedir a quantidade de horas que ele permaneceu no estacionamento. Após isso, realiza o seguinte cálculo: **precoInicial** * **precoPorHora**, exibindo para o usuário.
+* [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) instalado no sistema.
 
-**ListarVeiculos**: Lista todos os veículos presentes atualmente no estacionamento. Caso não haja nenhum, exibir a mensagem "Não há veículos estacionados".
+## Como Executar
 
-Por último, deverá ser feito um menu interativo com as seguintes ações implementadas:
-1. Cadastrar veículo
-2. Remover veículo
-3. Listar veículos
-4. Encerrar
+1. Clone o repositório:
 
+```bash
+git clone https://github.com/gabriel-ribeiro-dev/estaciona-desafio.git
+```
 
-## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+2. Acesse a pasta do projeto:
+
+```bash
+cd estaciona-desafio
+```
+
+3. Execute o projeto:
+
+```bash
+dotnet run
+```
+
+4. Siga as instruções no console para adicionar, remover ou listar veículos.
+
+## Observações
+
+* O projeto foi feito utilizando conceitos fundamentais de C# e pode ser expandido para funcionalidades futuras, como persistência em arquivo ou integração com banco de dados.
+
+---
+
+Se você quiser, Gabriel, posso criar uma **versão ainda mais visual e moderna**, com badges de .NET, GitHub e um mini guia rápido de uso, para deixar o README com cara de portfólio profissional.
+
+Quer que eu faça essa versão?

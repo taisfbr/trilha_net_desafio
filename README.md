@@ -25,12 +25,11 @@ O objetivo é criar um sistema funcional de estacionamento, aplicando conceitos 
 * Código modular e organizado em métodos (`AdicionarVeiculo`, `RemoverVeiculo`, `ListarVeiculos`).
 
 ## Pré-requisitos
-
-* [.NET SDK 6 ou superior](https://dotnet.microsoft.com/) instalado no sistema.
+Para rodar o projeto, é necessário ter o dotnet sdk instalado. Ajuste o csproje para a versão do dotnet instalada em seu computatador, caso não possua, baixe no link a baixo:
+[Baixar o dotnet sdk mais recente]
+(https://dotnet.microsoft.com/pt-br/download)
 
 ## Como Executar
-> **Pré-requisito:**  
-> Tenha o [.NET SDK 6 ou superior](https://dotnet.microsoft.com/) instalado em seu sistema.
 
 1. Clone o repositório:
 
@@ -43,21 +42,19 @@ git clone https://github.com/gabriel-ribeiro-dev/estaciona-desafio.git
 ```bash
 cd estaciona-desafio
 ```
-
-3. Execute o projeto:
+3. Acesse a pasta desafio fundamentos
+4. Abra o cs proje
+5. altere a tag >target framework para a versão correspondente a versão do dotnet instalado
+6. Salve o arquivo
+7. Execute o projeto:
 
 ```bash
 dotnet run
 ```
 
-4. Siga as instruções no console para adicionar, remover ou listar veículos.
+8. Siga as instruções no console para adicionar, remover ou listar veículos.
 
 ## Observações
 
 * O projeto foi feito utilizando conceitos fundamentais de C# e pode ser expandido para funcionalidades futuras, como persistência em arquivo ou integração com banco de dados.
 
----
-
-Se você quiser, Gabriel, posso criar uma **versão ainda mais visual e moderna**, com badges de .NET, GitHub e um mini guia rápido de uso, para deixar o README com cara de portfólio profissional.
-
-Quer que eu faça essa versão?

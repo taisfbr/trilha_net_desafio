@@ -15,7 +15,7 @@ O objetivo é criar um sistema funcional de estacionamento, aplicando conceitos 
 ## Tecnologias Utilizadas
 
 * C#
-* .NET 6
+* .NET 8
 * Console Application
 
 ## Diferenciais Implementados
@@ -26,9 +26,11 @@ O objetivo é criar um sistema funcional de estacionamento, aplicando conceitos 
 
 ## Pré-requisitos
 
-* [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) instalado no sistema.
+* [.NET SDK 6 ou superior](https://dotnet.microsoft.com/) instalado no sistema.
 
 ## Como Executar
+> **Pré-requisito:**  
+> Tenha o [.NET SDK 6 ou superior](https://dotnet.microsoft.com/) instalado em seu sistema.
 
 1. Clone o repositório:
 

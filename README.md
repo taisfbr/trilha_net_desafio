@@ -1,5 +1,3 @@
----
-
 # Sistema de Estacionamento 🚗
 
 Projeto desenvolvido como parte do desafio de Fundamentos em C# da DIO.

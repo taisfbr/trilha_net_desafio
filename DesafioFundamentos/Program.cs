@@ -28,6 +28,7 @@ while (exibirMenu)
     Console.WriteLine("2 - Remover veículo");
     Console.WriteLine("3 - Listar veículos");
     Console.WriteLine("4 - Encerrar");
+    Console.WriteLine("5 - Exibir Log de Eventos");
 
     switch (Console.ReadLine())
     {
@@ -45,6 +46,10 @@ while (exibirMenu)
 
         case "4":
             exibirMenu = false;
+            break;
+
+        case "5":
+            es.ExibirLog();
             break;
 
         default:

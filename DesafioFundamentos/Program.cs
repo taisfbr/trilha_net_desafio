@@ -37,6 +37,7 @@ while (exibirMenu)
 
         case "2":
             es.RemoverVeiculo();
+            
             break;
 
         case "3":
@@ -56,4 +57,4 @@ while (exibirMenu)
     Console.ReadLine();
 }
 
-Console.WriteLine("O programa se encerrou");
+Console.WriteLine("Encerrando...");

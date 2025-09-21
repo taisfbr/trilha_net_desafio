@@ -1,14 +1,15 @@
+#
 📌 DIO - Trilha .NET - Fundamentos
 
 Este repositório contém a solução para o desafio de projeto do módulo Fundamentos .NET da DIO (Digital Innovation One)
 .
-
+#
 🚀 Desafio de Projeto
 
 O objetivo foi desenvolver um sistema de estacionamento em C#, capaz de gerenciar veículos e realizar operações básicas como adicionar, remover e listar veículos.
 
 O programa foi implementado como uma aplicação console em .NET, utilizando listas e operações interativas com o usuário.
-
+#
 📖 Contexto
 
 O sistema simula o funcionamento de um estacionamento, permitindo:
@@ -20,7 +21,7 @@ Remover um veículo, informando o tempo estacionado e calculando o valor a pagar
 Listar todos os veículos atualmente no pátio.
 
 Encerrar o programa através de um menu interativo.
-
+#
 📌 Estrutura da Classe Estacionamento
 
 A classe Estacionamento possui:
@@ -41,7 +42,7 @@ RemoverVeiculo() → remove um veículo, calcula e exibe o valor a pagar.
 
 ListarVeiculos() → exibe todos os veículos estacionados.
 
-🖥️ Menu Interativo
+#🖥️ Menu Interativo
 
 O programa apresenta as seguintes opções no console:
 
@@ -52,7 +53,7 @@ Remover veículo
 Listar veículos
 
 Encerrar
-
+#
 🖥️ Exemplo de Uso
 // Cadastro de veículo
 Estacionamento est = new Estacionamento(precoInicial: 5, precoPorHora: 2);
@@ -63,7 +64,7 @@ est.ListarVeiculos();   // Exibe: "Veículos estacionados: ABC-1234"
 est.RemoverVeiculo();   // Usuário informa placa e horas
 // Exibe valor calculado: precoInicial + (precoPorHora * horas)
 
-📚 Aprendizados
+#📚 Aprendizados
 
 Criação de classes e métodos em C#.
 
